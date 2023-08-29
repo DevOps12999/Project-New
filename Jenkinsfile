@@ -3,6 +3,7 @@ pipeline {
     
     parameters {
         string(name: 'BRANCH_SPECIFIER', defaultValue: '*/main', description: 'Branch to build')
+        string(name: 'URL', defaultValue: '', description: 'Branch to build')
         
     }
     
@@ -17,7 +18,7 @@ pipeline {
                 script {
                     checkout([$class: 'GitSCM', 
                               branches: [[name: params.BRANCH_SPECIFIER]], 
-                              userRemoteConfigs: [[url: 'https://github.com/yugandhar111/maven-bulid.git']]])
+                              userRemoteConfigs: [[url: '$URL']]])
                 }
             }
         }
